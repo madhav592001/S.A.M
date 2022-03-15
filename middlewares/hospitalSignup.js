@@ -24,6 +24,35 @@ exports.signup = (req, res) => {
   });
 };
 
+exports.signin = (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({
+      message: 'Invalid Credentials',
+    });
+  } else {
+    Hospital.findOne({ email }).exec((err, user) => {
+      if (err) {
+        return res.status(500).json(err);
+      }
+      if (!user) {
+        return res.status(400).json({
+          error: 'No Hospitals found on this email',
+        });
+      }
+      if (user.authenticate(password)) {
+        const { hashPassword, ...others } = user._doc;
+        return res.status(200).json(others);
+      } else {
+        return res.status(400).json({
+          error: 'Invalid Credentials',
+        });
+      }
+    });
+  }
+};
+
 let transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -113,17 +142,17 @@ exports.verifyOtp = async (req, res) => {
   }
 };
 
-exports.resendOtp = async(req,res) => {
-    try {
-        let {userId,email} = req.body ;
-        if (!userId || !email) {
-            return res.status(400).json({ message: 'Provide valid details' });
-        }else{
-            await HospitalVerification.deleteMany({userId}) ; 
-            sendOtpVerificationemail({_id:userId,email},res) ;
-        }
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json(error);
+exports.resendOtp = async (req, res) => {
+  try {
+    let { userId, email } = req.body;
+    if (!userId || !email) {
+      return res.status(400).json({ message: 'Provide valid details' });
+    } else {
+      await HospitalVerification.deleteMany({ userId });
+      sendOtpVerificationemail({ _id: userId, email }, res);
     }
-}
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json(error);
+  }
+};
