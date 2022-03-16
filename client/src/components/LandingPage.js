@@ -8,7 +8,6 @@ import pic from './images/pic.jpeg'
 function LandingPage() {
   return (
     <div>
-      {/* Navbar */}
 
       <Navbar
         collapseOnSelect
