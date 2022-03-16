@@ -1,6 +1,8 @@
 const Hospital = require('../models/hospitalSchema');
 
+//todo TAKE AND UPDATE DETAILS
 exports.takeDetails = async (req, res) => {
+  const userId = req.params.userId;
   if (!userId) {
     return res.status(400).json({
       error: 'Provide valid hospital id',
@@ -23,12 +25,71 @@ exports.takeDetails = async (req, res) => {
 
         return res.status(200).json({
           message: 'Hospital details updated',
-          updatedHospital
+          updatedHospital,
         });
       }
     } catch (error) {
       console.log(error);
       return res.status(400).json(error);
     }
+  }
+};
+
+//todo GET HOSPITAL BY ID
+exports.getDetailsById = async (req, res) => {
+  const userId = req.params.userId;
+  if (!userId) {
+    return res.status(400).json({
+      error: 'Provide valid hospital id',
+    });
+  } else {
+    try {
+      const hospital = await Hospital.findById(userId);
+      if (!hospital) {
+        return res.status(400).json({
+          error: 'No hospital exist',
+        });
+      } else {
+        return res.status(200).json(hospital);
+      }
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json(error);
+    }
+  }
+};
+
+//todo GET ALL THE HOSPITAL DETAILS
+exports.getAllHospitals = async (req, res) => {
+  try {
+    const hospitals = await Hospital.find();
+    if (hospitals.length <= 0) {
+      return res.status(400).json({ message: 'No Hospitals found' });
+    } else {
+      return res.status(200).json(hospitals);
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+//TODO ADD DOCTORS IN A HOSPITAL
+exports.addDoctors = async (req, res) => {
+  const userId = req.params.userId;
+
+  const doctors = req.body.doctors;
+
+  try {
+    const updated = await Hospital.findByIdAndUpdate(
+      { _id : userId },
+      { $push: { doctors: doctors } }
+    )
+    return res.status(200).json(updated); 
+  } catch (error) {
+    console.log(error) ;
+    return res.status(500).json({
+      message: 'Internal server error',
+    });
   }
 };

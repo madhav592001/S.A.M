@@ -1,16 +1,26 @@
 const router = require('express').Router();
-const { takeDetails } = require('../middlewares/hospitalDetails');
+const {
+  takeDetails,
+  getDetailsById,
+  getAllHospitals,
+  addDoctors,
+} = require('../middlewares/hospitalDetails');
 const {
   signup,
   verifyOtp,
   resendOtp,
-  signin
+  signin,
 } = require('../middlewares/hospitalSignup');
 
 router.post('/signup', signup);
 router.post('/verifyotp', verifyOtp);
 router.post('/resendotp', resendOtp);
-router.post("/signin",signin) ; 
-router.post("/details",takeDetails) ; 
+router.post('/signin', signin);
+
+router.get('/:userId', getDetailsById);
+router.put('/:userId', takeDetails);
+router.put('/adddoctor/:userId', addDoctors);
+
+router.get('/', getAllHospitals);
 
 module.exports = router;

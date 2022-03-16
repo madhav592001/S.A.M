@@ -35,43 +35,35 @@ const hospitalSchema = new mongoose.Schema(
         },
       },
     ],
-    totalIcuBeds:{
-      type:Number,
-      required:true,
+    totalIcuBeds: {
+      type: Number,
     },
-    totalGeneralBeds:{
-      type:Number,
-      required:true,
+    totalGeneralBeds: {
+      type: Number,
     },
-    totalPrivateWards:{
-      type:Number,
-      required:true
+    totalPrivateWards: {
+      type: Number,
     },
-    totalVentilators:{
-      type:Number,
-      required:true
-    } ,
-    availableIcuBeds:{
-      type:Number,
-      required:true,
+    totalVentilators: {
+      type: Number,
     },
-    availableGeneralBeds:{
-      type:Number,
-      required:true,
+    availableIcuBeds: {
+      type: Number,
     },
-    availablePrivateWards:{
-      type:Number,
-      required:true
+    availableGeneralBeds: {
+      type: Number,
     },
-    availableVentilators:{
-      type:Number,
-      required:true
+    availablePrivateWards: {
+      type: Number,
     },
-    totalOxygenCylinders:{
-      type:Number,
+    availableVentilators: {
+      type: Number,
     },
-    availableOxygenCylinders:{
-      type:Number,
+    totalOxygenCylinders: {
+      type: Number,
+    },
+    availableOxygenCylinders: {
+      type: Number,
     },
   },
   {

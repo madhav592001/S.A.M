@@ -13,7 +13,7 @@ dotenv.config();
 connectDb() ;
 
 //todo  ROUTES
-app.use("/api/v1/",hospitalRoutes) ; 
+app.use("/api/v1/hospital",hospitalRoutes) ; 
 
 const port = process.env.PORT || 5001;
 app.listen(port, () => {
