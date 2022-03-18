@@ -1,8 +1,10 @@
 import React from 'react'
-import { Col, Container, Navbar, Row, Form, Button } from 'react-bootstrap'
+import { Col, Container, Navbar, Row, Form, Button, ToggleButton } from 'react-bootstrap'
 import logo from './images/logo.png'
 import pic from './images/loginsignup.jpg'
 import {Link} from 'react-router-dom'
+import ToggleSwitch from './ToggleSwitch'
+
 
 function LoginSignScreen() {
   return (
@@ -90,7 +92,7 @@ function LoginSignScreen() {
                 paddingBottom:"4%"
               }}
             >
-              <Button
+              {/* <Button
                     style={{
                       marginLeft: '2%',
                       marginTop: '5%',
@@ -102,7 +104,8 @@ function LoginSignScreen() {
                     type="submit"
                   >
                     Login
-                  </Button>
+                  </Button> */}
+                  <div  style={{paddingTop:"4%",marginLeft:"2%"}}><ToggleSwitch/></div>
               <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label
