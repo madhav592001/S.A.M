@@ -49,7 +49,7 @@ function LandingPage() {
               <Link to='/hospitalsearch'>
               <Button
                 className="mt-5"
-                style={{ backgroundColor: '#79B4B7', borderRadius: '10%' }}
+                style={{ backgroundColor: '#79B4B7', borderRadius: '20px' }}
               >
                 
                 Get Information
@@ -74,7 +74,7 @@ function LandingPage() {
             </h1>
             <Col
               className="me-4 ms-4 p-2 mt-2"
-              style={{ backgroundColor: '#F8F0DF', borderRadius: '30%' }}
+              style={{ backgroundColor: '#F8F0DF', borderRadius: '50px' }}
             >
               <h1 className="text-center mt-3">
                 <FontAwesomeIcon icon={faBedPulse} />
@@ -87,7 +87,7 @@ function LandingPage() {
             </Col>
             <Col
               className="me-4 ms-4 mt-2"
-              style={{ backgroundColor: '#F8F0DF', borderRadius: '30%' }}
+              style={{ backgroundColor: '#F8F0DF', borderRadius: '50px'  }}
             >
               <h1 className="text-center mt-3">
                 <FontAwesomeIcon icon={faBedPulse} />
@@ -98,9 +98,10 @@ function LandingPage() {
                 check from here
               </p>
             </Col>
+            
             <Col
               className="me-4 ms-4 mt-2"
-              style={{ backgroundColor: '#F8F0DF', borderRadius: '30%' }}
+              style={{ backgroundColor: '#F8F0DF', borderRadius: '50px' }}
             >
               <h1 className="text-center mt-3">
                 <FontAwesomeIcon icon={faUserDoctor} />
