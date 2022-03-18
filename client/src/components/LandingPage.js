@@ -1,14 +1,13 @@
 import React from 'react'
-import { Navbar, Container, Nav, Row, Col, Button, Card } from 'react-bootstrap'
+import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBedPulse, faUserDoctor } from '@fortawesome/free-solid-svg-icons'
-
+import { Link } from 'react-router-dom';
 import logo from './images/logo.png'
 import pic from './images/pic.jpeg'
 function LandingPage() {
   return (
     <div>
-
       <Navbar
         collapseOnSelect
         expand="lg"
@@ -47,12 +46,15 @@ function LandingPage() {
                 available here, you can decide accordingly and it help you to
                 choose best for you accordingly
               </h6>
+              <Link to='/hospitalsearch'>
               <Button
                 className="mt-5"
                 style={{ backgroundColor: '#79B4B7', borderRadius: '10%' }}
               >
+                
                 Get Information
               </Button>
+              </Link>
             </Col>
 
             <Col className="me-5 mt-5 ps-5">
