@@ -26,9 +26,9 @@ function ToggleSwitch() {
         paddingBottom:"4%"
       }}
     >
-          <div  style={{paddingTop:"4%",marginLeft:"2%"}}>
-          <span className="parentclicked"> {name1} 
-        <span className = "oneclicked" onClick={change}>
+          <div style={{paddingTop:"4%",marginLeft:"2%"}}>
+          <span className="parentclicked" onClick={change}> {name1} 
+        <span className = "oneclicked" >
          {name2} </span> </span>
           </div>
       <Form>
@@ -138,8 +138,8 @@ function ToggleSwitch() {
     }}
   >
         <div  style={{paddingTop:"4%",marginLeft:"2%"}}>
-        <span  style = {{fontSize:"100%",backgroundColor:"rgba(121, 180, 183, 0.42)",padding:"1% 3%",paddingLeft:"0%",height:"6%",borderRadius:"50px"}}>
-      <span  style = {{color:"white",backgroundColor:"#79B4B7",padding:"1% 5%",borderRadius:"50px"}} onClick={change}>
+        <span  style = {{fontSize:"100%",backgroundColor:"rgba(121, 180, 183, 0.42)",padding:"1% 3%",paddingLeft:"0%",height:"6%",borderRadius:"50px",}} onClick={change}>
+      <span  style = {{color:"white",backgroundColor:"#79B4B7",padding:"1% 5%",borderRadius:"50px"}} >
        {name1} </span> {name2}</span>
         </div>
     <Form>

@@ -81,7 +81,7 @@ function LoginSignScreen() {
             </div>
           </Col>
           <Col>
-          <ToggleSwitch/>
+            <ToggleSwitch/>
           </Col>
         </Row>
       </Container>
