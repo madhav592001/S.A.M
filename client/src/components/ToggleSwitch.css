@@ -1,0 +1,34 @@
+.one{
+    background-color:#79B4B7;
+    color:white;
+    padding: 1% 4%;
+    border-radius:50px; 
+}
+.zero{
+    background-color:#79B4B7;
+    padding: 1% 4%;
+    border-radius:50px; 
+    color:white;
+}
+.parent{
+    font-size:100%;
+        background-color:rgba(121, 180, 183, 0.42);
+        padding:1% 3%;
+        padding-left:0%;
+        height:6%;
+        border-radius:50px;
+}
+.oneclicked{
+    background-color:#79B4B7;
+    color:white;
+    padding: 1% 4%;
+    border-radius:50px; 
+}
+.parentclicked{
+    font-size:100%;
+        background-color:rgba(121, 180, 183, 0.42);
+        padding:1% 0%;
+        padding-left:3%;
+        height:6%;
+        border-radius:50px;
+}
