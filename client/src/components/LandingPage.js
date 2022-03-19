@@ -2,7 +2,7 @@ import React from 'react'
 import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBedPulse, faUserDoctor } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import logo from './images/logo.png'
 import pic from './images/pic.jpeg'
 function LandingPage() {
@@ -46,14 +46,13 @@ function LandingPage() {
                 available here, you can decide accordingly and it help you to
                 choose best for you accordingly
               </h6>
-              <Link to='/hospitalsearch'>
-              <Button
-                className="mt-5"
-                style={{ backgroundColor: '#79B4B7', borderRadius: '20px' }}
-              >
-                
-                Get Information
-              </Button>
+              <Link to="/hospitalsearch">
+                <Button
+                  className="mt-5"
+                  style={{ backgroundColor: '#79B4B7', borderRadius: '20px' }}
+                >
+                  Get Information
+                </Button>
               </Link>
             </Col>
 
@@ -87,7 +86,7 @@ function LandingPage() {
             </Col>
             <Col
               className="me-4 ms-4 mt-2"
-              style={{ backgroundColor: '#F8F0DF', borderRadius: '50px'  }}
+              style={{ backgroundColor: '#F8F0DF', borderRadius: '50px' }}
             >
               <h1 className="text-center mt-3">
                 <FontAwesomeIcon icon={faBedPulse} />
@@ -95,10 +94,10 @@ function LandingPage() {
               <h3 className="text-center mt-3">Available ventilator</h3>
               <p className="text-center mt-1">
                 Available beds in General, ICU and other in an hospital can be
-                check from here
+                check from here.
               </p>
             </Col>
-            
+
             <Col
               className="me-4 ms-4 mt-2"
               style={{ backgroundColor: '#F8F0DF', borderRadius: '50px' }}
