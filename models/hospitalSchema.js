@@ -19,6 +19,9 @@ const hospitalSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    city:{
+      type:String,
+    },
     doctors: [
       {
         name: {
