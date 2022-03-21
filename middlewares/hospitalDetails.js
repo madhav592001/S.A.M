@@ -4,14 +4,14 @@ const Hospital = require('../models/hospitalSchema');
 exports.takeDetails = async (req, res) => {
   const userId = req.params.userId;
   if (!userId) {
-    return res.status(400).json({
+    return res.status(210).json({
       error: 'Provide valid hospital id',
     });
   } else {
     try {
       const hospital = await Hospital.findById(userId);
       if (!hospital) {
-        return res.status(400).json({
+        return res.status(200).json({
           error: 'No hospital exist',
         });
       } else {
@@ -30,7 +30,7 @@ exports.takeDetails = async (req, res) => {
       }
     } catch (error) {
       console.log(error);
-      return res.status(400).json(error);
+      return res.status(500).json(error);
     }
   }
 };
@@ -39,14 +39,14 @@ exports.takeDetails = async (req, res) => {
 exports.getDetailsById = async (req, res) => {
   const userId = req.params.userId;
   if (!userId) {
-    return res.status(400).json({
+    return res.status(210).json({
       error: 'Provide valid hospital id',
     });
   } else {
     try {
       const hospital = await Hospital.findById(userId);
       if (!hospital) {
-        return res.status(400).json({
+        return res.status(200).json({
           error: 'No hospital exist',
         });
       } else {
@@ -54,7 +54,7 @@ exports.getDetailsById = async (req, res) => {
       }
     } catch (error) {
       console.log(error);
-      return res.status(400).json(error);
+      return res.status(500).json(error);
     }
   }
 };
@@ -82,7 +82,7 @@ exports.getAllHospitals = async (req, res) => {
     try {
       const hospitals = await Hospital.find();
       if (hospitals.length <= 0) {
-        return res.status(420).json({ message: 'No Hospitals found' });
+        return res.status(200).json({ message: 'No Hospitals found' });
       } else {
         return res.status(200).json(hospitals);
       }

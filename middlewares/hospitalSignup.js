@@ -8,7 +8,7 @@ exports.signup = (req, res) => {
   Hospital.findOne({ email }).exec((err, user) => {
     if (user) {
       return res
-        .status(400)
+        .status(210)
         .json({ error: 'Hospital with this email already exists' });
     }
 
@@ -37,7 +37,7 @@ exports.signin = (req, res) => {
         return res.status(500).json(err);
       }
       if (!user) {
-        return res.status(400).json({
+        return res.status(210).json({
           error: 'No Hospitals found on this email',
         });
       }
@@ -45,7 +45,7 @@ exports.signin = (req, res) => {
         const { hashPassword, ...others } = user._doc;
         return res.status(200).json(others);
       } else {
-        return res.status(400).json({
+        return res.status(210).json({
           error: 'Invalid Credentials',
         });
       }
@@ -107,25 +107,25 @@ exports.verifyOtp = async (req, res) => {
   try {
     let { userId, otp } = req.body;
     if (!userId || !otp) {
-      return res.status(400).json({ message: 'Provide valid details' });
+      return res.status(210).json({ message: 'Provide valid details' });
     } else {
       const hospital = await HospitalVerification.find({
         userId,
       });
       if (hospital.length <= 0) {
         return res
-          .status(400)
+          .status(200)
           .json({ message: 'No Hospitals found! signup first' });
       } else {
         const { expiresAt } = hospital[0];
         if (expiresAt < Date.now()) {
           await HospitalVerification.deleteMany({ userId });
-          return res.status(400).json({ message: 'Code has expired' });
+          return res.status(210).json({ message: 'Code has expired' });
         } else {
           const validotp = await hospital[0].compareOtp(otp);
 
           if (!validotp) {
-            return res.status(400).json({ message: 'Wrong Otp!' });
+            return res.status(210).json({ message: 'Wrong Otp!' });
           } else {
             await Hospital.updateOne({ _id: userId }, { verified: true });
             await HospitalVerification.deleteMany({ userId });
@@ -146,7 +146,7 @@ exports.resendOtp = async (req, res) => {
   try {
     let { userId, email } = req.body;
     if (!userId || !email) {
-      return res.status(400).json({ message: 'Provide valid details' });
+      return res.status(210).json({ message: 'Provide valid details' });
     } else {
       await HospitalVerification.deleteMany({ userId });
       sendOtpVerificationemail({ _id: userId, email }, res);
