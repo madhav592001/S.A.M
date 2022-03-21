@@ -1,8 +1,24 @@
 import React, { useState } from 'react'
 import { Col, Container, Navbar, Row, Form, Button, ToggleButton } from 'react-bootstrap'
 import './ToggleSwitch.css'
+import axios from 'axios'
 
 function ToggleSwitch() {
+  const [name,setName] = useState('');
+  const [email,setEmail] = useState('');
+  const [pass,setPass] = useState('');
+
+  const onGetOTP = async(e)=>{
+    e.preventDefault();
+    const config = { 
+      name:name,
+      email:email,
+      password:pass,
+    }
+    console.log(config);
+      const response = await axios.post("http://localhost:5000/signup",config);
+      console.log(response) ;}
+
     const [val,setVal] = useState(0);
     const name1 = "Login";
     const name2 = "SignUp";
@@ -11,7 +27,6 @@ function ToggleSwitch() {
       setVal(1);
       else
       setVal(0);
-      console.log(val);
   }
   if(val === 1)
   {
@@ -46,6 +61,7 @@ function ToggleSwitch() {
           }}
           type="text"
           placeholder="Enter Name"
+          onChange = {(e)=>{setName(e.target.value);}}
         />
       </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -60,6 +76,7 @@ function ToggleSwitch() {
             }}
             type="email"
             placeholder="Enter email"
+            onChange = {(e)=>{setEmail(e.target.value);}}
           />
           <Form.Text
             style={{ marginLeft: '2%',fontSize:"70%" }}
@@ -80,6 +97,7 @@ function ToggleSwitch() {
             }}
             type="password"
             placeholder="Password"
+            onChange = {(e)=>{setPass(e.target.value);}}
           />
         </Form.Group>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -92,6 +110,7 @@ function ToggleSwitch() {
               fontSize:"90%"
             }}
             type="submit"
+            onSubmit={onGetOTP}
           > Get OTP
           </Button>
         </div>
