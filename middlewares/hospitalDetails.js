@@ -70,7 +70,7 @@ exports.getAllHospitals = async (req, res) => {
         city: req.query.city,
       });
       if (hospitals.length <= 0) {
-        return res.status(400).json({ message: 'No Hospitals found' });
+        return res.status(420).json({ message: 'No Hospitals found' });
       } else {
         return res.status(200).json(hospitals);
       }
@@ -82,7 +82,7 @@ exports.getAllHospitals = async (req, res) => {
     try {
       const hospitals = await Hospital.find();
       if (hospitals.length <= 0) {
-        return res.status(400).json({ message: 'No Hospitals found' });
+        return res.status(420).json({ message: 'No Hospitals found' });
       } else {
         return res.status(200).json(hospitals);
       }

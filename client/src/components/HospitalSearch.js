@@ -1,8 +1,17 @@
-import React from 'react'
+import {React,useEffect,useState} from 'react'
 import logo from './images/logo.png'
 import { Row, Container, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+
 function HospitalSearch() {
+  const [hospitals,setHospitals] = useState([])
+  const hospitalServer = "http://localhost:5000/api/v1/hospital/";
+    useEffect(async()=>{
+      const response = await axios.get("http://localhost:5000/api/v1/hospital/"); 
+      console.log(response);
+    },[])
   return (
     <div>
       <Row style={{ backgroundColor: '#F8F0DF' }} className="pt-2 ps-5">
@@ -11,7 +20,7 @@ function HospitalSearch() {
         </Row>
         <Row className="mb-4">
           <Col className="sm-1">
-            <h5 className="mt-3 text-black-50">Hospital City</h5>
+            <h5 className="mt-3 text-black-50">Hospital Name</h5>
             <input
               type="text"
               name="name"

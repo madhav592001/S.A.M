@@ -16,7 +16,7 @@ function LandingPage() {
       >
         <Container>
           <Navbar.Brand>
-            <img src={logo} style={{ width: 140, height: 60 }} alt="pic" />
+            <img src={logo} style={{ width: '110%', height: 60 }} alt="pic" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -24,6 +24,7 @@ function LandingPage() {
             <Nav>
               <Nav.Link href="#about">About</Nav.Link>
               <Nav.Link href="#contactus">Contact Us</Nav.Link>
+         <Link to='/log' style={{textDecoration:"none"}}><Nav.Link href="#contactus">Login/SignUp</Nav.Link></Link> 
             </Nav>
           </Navbar.Collapse>
         </Container>
