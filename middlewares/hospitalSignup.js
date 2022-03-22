@@ -5,6 +5,11 @@ require('dotenv').config();
 
 exports.signup = (req, res) => {
   const { name, email, password } = req.body;
+
+  if(!name || !email || !password){
+    return res.status(211).json({message:"Invalid Credentials"})
+  }
+
   Hospital.findOne({ email }).exec((err, user) => {
     if (user) {
       return res
