@@ -12,39 +12,13 @@ import {
 } from 'react-bootstrap';
 import './ToggleSwitch.css';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom'
 
 function ToggleSwitch() {
   const [val, setVal] = useState(0);
   const [close, setClose] = useState(true);
   const [loginPass,setLoginPass] = useState('');
   const [loginEmail, setLoginEmail] = useState('');
-  //login api
-  const signin = (e) => {
-    e.preventDefault() ; 
-
-    const config = { 
- 
-      email:loginEmail,
-      password:loginPass,
-    }
-
-    console.log(config)
-
-    axios.post("http://localhost:5000/api/v1/hospital/signin",config).then(res=>{
-
-      console.log(res) ;
-
-      if(res.status === 200){
-        window.location.reload(false);
-      }
-
-    })
-
-
-  }
-  
-  
-  //* form state
   const [userName, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -53,7 +27,34 @@ function ToggleSwitch() {
   const [success, setSuccess] = useState(false);
   const [otp,setotp] = useState() ; 
   const [message,setMessage] = useState("") ;
+  let navigate = useNavigate();
 
+  //login api
+  const signin = async (e) => {
+    e.preventDefault() ; 
+    const config = { 
+
+      email:loginEmail,
+      password:loginPass,
+    }
+    console.log(config)
+    const res = await axios.post("http://localhost:5000/api/v1/hospital/signin",config)
+    if(res.status === 210)
+    setError('Invalid Credentials');
+    else if(res.status === 500)
+    setError('Internal Error');
+    else if(res.status === 200)
+    {setMessage('Login Successful');
+    setSuccess(true);
+    setTimeout(()=>{
+     navigate('/hospitaldashboard');
+    },3000)
+  }
+  }
+  
+  
+  //* form state
+  
   const getOtp = async (e) => {
     setLoading((kfj) => setLoading(true));
     e.preventDefault();
@@ -120,7 +121,6 @@ function ToggleSwitch() {
   const change = () => {
     if (val === 0) setVal(1);
     else setVal(0);
-    console.log(val);
   };
   if (val === 1) {
     return (
@@ -268,6 +268,14 @@ function ToggleSwitch() {
           paddingBottom: '4%',
         }}
       >
+          {loading ? <Spinner animation='grow' variant='info' /> : "" }
+
+{success && (
+  <Alert variant='success'>{message}</Alert>
+)}
+  {
+    error &&  <Alert variant='danger'>{error}</Alert> 
+  }
         <div style={{ paddingTop: '4%', marginLeft: '2%' }}>
           <span
             style={{
