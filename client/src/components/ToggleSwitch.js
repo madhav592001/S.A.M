@@ -16,43 +16,39 @@ import axios from 'axios';
 function ToggleSwitch() {
   const [val, setVal] = useState(0);
   const [close, setClose] = useState(true);
-  const [loginPass,setLoginPass] = useState('');
+  const [loginPass, setLoginPass] = useState('');
   const [loginEmail, setLoginEmail] = useState('');
   //login api
   const signin = (e) => {
-    e.preventDefault() ; 
+    e.preventDefault();
 
-    const config = { 
- 
-      email:loginEmail,
-      password:loginPass,
-    }
+    const config = {
+      email: loginEmail,
+      password: loginPass,
+    };
 
-    console.log(config)
+    console.log(config);
 
-    axios.post("http://localhost:5000/api/v1/hospital/signin",config).then(res=>{
+    axios
+      .post('http://localhost:5000/api/v1/hospital/signin', config)
+      .then((res) => {
+        console.log(res);
 
-      console.log(res) ;
+        if (res.status === 200) {
+          window.location.reload(false);
+        }
+      });
+  };
 
-      if(res.status === 200){
-        window.location.reload(false);
-      }
-
-    })
-
-
-  }
-  
-  
   //* form state
   const [userName, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [otp,setotp] = useState() ; 
-  const [message,setMessage] = useState("") ;
+  const [otp, setotp] = useState();
+  const [message, setMessage] = useState('');
 
   const getOtp = async (e) => {
     setLoading((kfj) => setLoading(true));
@@ -71,10 +67,10 @@ function ToggleSwitch() {
     // console.log(res.data)
 
     if (res.status === 200) {
-      await localStorage.setItem('userId',res.data.data.userId)
+      await localStorage.setItem('userId', res.data.data.userId);
       // console.log(res.data.data)
       setSuccess(true);
-      setMessage((re) => setMessage("OTP sent successfully on Email"))
+      setMessage((re) => setMessage('OTP sent successfully on Email'));
       // console.log(userId) ;
       setClose(false);
     }
@@ -87,33 +83,32 @@ function ToggleSwitch() {
     setLoading((fkja) => setLoading(false));
   };
 
-  const verifyOtp = async(e) => {
-    e.preventDefault()
+  const verifyOtp = async (e) => {
+    e.preventDefault();
     setLoading((kfj) => setLoading(true));
     const config = {
-      userId : localStorage.getItem("userId"),
-      otp:otp
-    }
-    console.log(config)
+      userId: localStorage.getItem('userId'),
+      otp: otp,
+    };
+    console.log(config);
     const res = await axios.post(
       'http://localhost:5000/api/v1/hospital/verifyotp',
       config
     );
 
-      console.log(res)
+    console.log(res);
 
-    if(res.status === 200){
-      setSuccess(true) ; 
-      setMessage((re) => setMessage("OTP verified"))
+    if (res.status === 200) {
+      setSuccess(true);
+      setMessage((re) => setMessage('OTP verified'));
 
-      setTimeout(()=>{
-        window.location.reload(false) ;
-      },5000)
-
+      setTimeout(() => {
+        window.location.reload(false);
+      }, 5000);
     }
     if (res.status === 210)
       setError((error) => setError('Code Expired Or Invalid Credentials'));
-  }
+  };
 
   const name1 = 'Login';
   const name2 = 'SignUp';
@@ -135,14 +130,12 @@ function ToggleSwitch() {
           paddingBottom: '4%',
         }}
       >
-        {loading ? <Spinner animation='grow' variant='info' /> : "" }
+        {loading ? <Spinner animation='grow' variant='info' /> : ''}
 
         {success && (
           <Alert variant='success'>OTP sent successfully on your email</Alert>
         )}
-          {
-            error &&  <Alert variant='danger'>{error}</Alert> 
-          }
+        {error && <Alert variant='danger'>{error}</Alert>}
 
         <div style={{ paddingTop: '4%', marginLeft: '2%' }}>
           <span className='parentclicked' onClick={change}>
@@ -234,7 +227,7 @@ function ToggleSwitch() {
               type='text'
               placeholder='Enter OTP'
               value={otp}
-              onChange = {(e) => setotp(e.target.value)}
+              onChange={(e) => setotp(e.target.value)}
             />
           </Form.Group>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -247,7 +240,7 @@ function ToggleSwitch() {
                 fontSize: '100%',
               }}
               disabled={close}
-              onClick = {verifyOtp}
+              onClick={verifyOtp}
             >
               Verify
             </Button>
@@ -308,7 +301,9 @@ function ToggleSwitch() {
               }}
               type='email'
               placeholder='Enter email'
-              onChange={(e) => {setLoginEmail(e.target.value);}}
+              onChange={(e) => {
+                setLoginEmail(e.target.value);
+              }}
             />
             <Form.Text
               style={{ marginLeft: '2%', fontSize: '70%' }}
@@ -332,7 +327,9 @@ function ToggleSwitch() {
               }}
               type='password'
               placeholder='Password'
-              onChange={(e) => {setLoginPass(e.target.value);}}
+              onChange={(e) => {
+                setLoginPass(e.target.value);
+              }}
             />
           </Form.Group>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
