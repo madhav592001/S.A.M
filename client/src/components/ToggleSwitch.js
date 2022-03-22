@@ -136,7 +136,7 @@ function ToggleSwitch() {
         {loading ? <Spinner animation='grow' variant='info' /> : ''}
 
         {success && (
-          <Alert variant='success' onClose={() => setMessage('')} dismissible>
+          <Alert variant='success'  onClose={() => setSuccess(false)} dismissible>
             OTP sent successfully on your email
           </Alert>
         )}
