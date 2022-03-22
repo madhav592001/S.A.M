@@ -33,7 +33,7 @@ exports.signin = (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).json({
+    return res.status(210).json({
       message: 'Invalid Credentials',
     });
   } else {

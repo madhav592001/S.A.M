@@ -7,11 +7,13 @@ import Hospital from './Hospital';
 
 function HospitalSearch() {
   const [hospitals,setHospitals] = useState([])
-  const hospitalServer = "http://localhost:5000/api/v1/hospital/";
+
     useEffect(async()=>{
       const response = await axios.get("http://localhost:5000/api/v1/hospital/"); 
-      setHospitals(response.data.hospitals);
+      // console.log(response.data)
+      setHospitals(response.data);
     },[])
+
     console.log(hospitals);
     
   return (
@@ -51,9 +53,9 @@ function HospitalSearch() {
           </Col>
         </Row>
       </Row>
-      {hospitals.length === 0?<h1>NO HOSPITALS FOUND</h1>: <Hospital/>}
-     
-      
+      {hospitals.length === 0 ?<h1>NO HOSPITALS FOUND</h1>: hospitals.map((hospital)=>(
+                <Hospital key = {hospital._id} name = {hospital.name} date = {hospital.createdAt}/>
+            ))}
     </div>
   )
 }

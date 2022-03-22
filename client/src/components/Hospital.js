@@ -2,20 +2,20 @@ import React from 'react'
 import { Row, Container, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
-function Hospital() {
+function Hospital(props) {
   return (
     <Container className="mt-2 " style={{ backgroundColor: '#F6F4F4' }}>
         <Row>
           <Col>
             <strong>
               {' '}
-              <span className="me-2" style={{ color: '#79B4B7' }}>
-                Hospital Name
+              <span className="me-1" style={{ color: '#79B4B7', fontSize:"150%" }}>
+                {props.name}
               </span>
             </strong>
             <span
               style={{
-                fontSize: '0.9rem',
+                fontSize: '0.8rem',
                 fontWeight: '500',
                 color: '#9D9D9D',
               }}
@@ -31,7 +31,7 @@ function Hospital() {
                 color: '#9D9D9D',
               }}
             >
-              Last updated on 22 Mar 2022
+              Last updated on {props.date.substring(0,10)}
             </span>
           </Col>
         </Row>
