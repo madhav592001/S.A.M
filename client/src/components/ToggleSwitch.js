@@ -16,7 +16,34 @@ import axios from 'axios';
 function ToggleSwitch() {
   const [val, setVal] = useState(0);
   const [close, setClose] = useState(true);
+  const [loginPass,setLoginPass] = useState('');
+  const [loginEmail, setLoginEmail] = useState('');
+  //login api
+  const signin = (e) => {
+    e.preventDefault() ; 
 
+    const config = { 
+ 
+      email:loginEmail,
+      password:loginPass,
+    }
+
+    console.log(config)
+
+    axios.post("http://localhost:5000/api/v1/hospital/signin",config).then(res=>{
+
+      console.log(res) ;
+
+      if(res.status === 200){
+        window.location.reload(false);
+      }
+
+    })
+
+
+  }
+  
+  
   //* form state
   const [userName, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -281,6 +308,7 @@ function ToggleSwitch() {
               }}
               type='email'
               placeholder='Enter email'
+              onChange={(e) => {setLoginEmail(e.target.value);}}
             />
             <Form.Text
               style={{ marginLeft: '2%', fontSize: '70%' }}
@@ -304,6 +332,7 @@ function ToggleSwitch() {
               }}
               type='password'
               placeholder='Password'
+              onChange={(e) => {setLoginPass(e.target.value);}}
             />
           </Form.Group>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -315,7 +344,7 @@ function ToggleSwitch() {
                 borderRadius: '22px',
                 fontSize: '100%',
               }}
-              type='submit'
+              onClick={signin}
             >
               Login
             </Button>
