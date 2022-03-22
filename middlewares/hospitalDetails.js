@@ -4,14 +4,14 @@ const Hospital = require('../models/hospitalSchema');
 exports.takeDetails = async (req, res) => {
   const userId = req.params.userId;
   if (!userId) {
-    return res.status(400).json({
+    return res.status(210).json({
       error: 'Provide valid hospital id',
     });
   } else {
     try {
       const hospital = await Hospital.findById(userId);
       if (!hospital) {
-        return res.status(400).json({
+        return res.status(200).json({
           error: 'No hospital exist',
         });
       } else {
@@ -30,7 +30,7 @@ exports.takeDetails = async (req, res) => {
       }
     } catch (error) {
       console.log(error);
-      return res.status(400).json(error);
+      return res.status(500).json(error);
     }
   }
 };
@@ -39,14 +39,14 @@ exports.takeDetails = async (req, res) => {
 exports.getDetailsById = async (req, res) => {
   const userId = req.params.userId;
   if (!userId) {
-    return res.status(400).json({
+    return res.status(210).json({
       error: 'Provide valid hospital id',
     });
   } else {
     try {
       const hospital = await Hospital.findById(userId);
       if (!hospital) {
-        return res.status(400).json({
+        return res.status(200).json({
           error: 'No hospital exist',
         });
       } else {
@@ -54,23 +54,42 @@ exports.getDetailsById = async (req, res) => {
       }
     } catch (error) {
       console.log(error);
-      return res.status(400).json(error);
+      return res.status(500).json(error);
     }
   }
 };
 
 //todo GET ALL THE HOSPITAL DETAILS
 exports.getAllHospitals = async (req, res) => {
-  try {
-    const hospitals = await Hospital.find();
-    if (hospitals.length <= 0) {
-      return res.status(400).json({ message: 'No Hospitals found' });
-    } else {
-      return res.status(200).json(hospitals);
+  if (req.query.length > 0) {
+    console.log(req.query);
+
+    try {
+      const hospitals = await Hospital.find({
+        name: req.query.name,
+        city: req.query.city,
+      });
+      if (hospitals.length <= 0) {
+        return res.status(420).json({ message: 'No Hospitals found' });
+      } else {
+        return res.status(200).json(hospitals);
+      }
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: 'Internal Server error!' });
     }
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({ message: 'Internal server error' });
+  } else {
+    try {
+      const hospitals = await Hospital.find();
+      if (hospitals.length <= 0) {
+        return res.status(200).json({ message: 'No Hospitals found' });
+      } else {
+        return res.status(200).json(hospitals);
+      }
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: 'Internal server error' });
+    }
   }
 };
 
@@ -82,12 +101,12 @@ exports.addDoctors = async (req, res) => {
 
   try {
     const updated = await Hospital.findByIdAndUpdate(
-      { _id : userId },
+      { _id: userId },
       { $push: { doctors: doctors } }
-    )
-    return res.status(200).json(updated); 
+    );
+    return res.status(200).json(updated);
   } catch (error) {
-    console.log(error) ;
+    console.log(error);
     return res.status(500).json({
       message: 'Internal server error',
     });
