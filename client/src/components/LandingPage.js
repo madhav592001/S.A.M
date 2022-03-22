@@ -96,7 +96,7 @@ function LandingPage() {
                 Available beds in General, ICU and other in an hospital can be
                 check from here.
               </p>
-            </Col>
+            </Col>  
 
             <Col
               className="me-4 ms-4 mt-2"

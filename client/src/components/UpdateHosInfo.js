@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
+import React, { useState } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import logo from './images/logo.png'
 import pic from './images/pic.jpeg'
 import { Link } from 'react-router-dom'
-import CheckBox from './CheckBox'
 import {
   faPlusSquare,
   faSignOut,
@@ -12,6 +12,109 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 function UpdateHosInfo() {
+  //Checkboc States
+
+  //  Counter is a state initialized to 0
+  const [counter, setCounter] = useState(0)
+
+  // Function is called everytime increment button is clicked
+  const handleClick1 = () => {
+    // Counter state is incremented
+    setCounter(counter + 1)
+  }
+
+  // Function is called everytime decrement button is clicked
+  const handleClick2 = () => {
+    // Counter state is decremented
+    if (counter === 0) {
+      return
+    }
+    setCounter(counter - 1)
+  }
+  const [counter1, setCounter1] = useState(0)
+
+  // Function is called everytime increment button is clicked
+  const handleClick11 = () => {
+    // Counter state is incremented
+    setCounter1(counter1 + 1)
+  }
+
+  // Function is called everytime decrement button is clicked
+  const handleClick21 = () => {
+    // Counter state is decremented
+    if (counter1 === 0) {
+      return
+    }
+    setCounter1(counter1 - 1)
+  }
+
+  const [counter2, setCounter2] = useState(0)
+
+  // Function is called everytime increment button is clicked
+  const handleClick12 = () => {
+    // Counter state is incremented
+    setCounter2(counter2 + 1)
+  }
+
+  // Function is called everytime decrement button is clicked
+  const handleClick22 = () => {
+    // Counter state is decremented
+    if (counter2 === 0) {
+      return
+    }
+    setCounter2(counter2 - 1)
+  }
+
+  const [counter3, setCounter3] = useState(0)
+
+  // Function is called everytime increment button is clicked
+  const handleClick13 = () => {
+    // Counter state is incremented
+    setCounter3(counter3 + 1)
+  }
+
+  // Function is called everytime decrement button is clicked
+  const handleClick23 = () => {
+    // Counter state is decremented
+    if (counter3 === 0) {
+      return
+    }
+    setCounter3(counter3 - 1)
+  }
+  const [counter4, setCounter4] = useState(0)
+
+  // Function is called everytime increment button is clicked
+  const handleClick14 = () => {
+    // Counter state is incremented
+    setCounter4(counter4 + 1)
+  }
+
+  // Function is called everytime decrement button is clicked
+  const handleClick24 = () => {
+    // Counter state is decremented
+    if (counter4 === 0) {
+      return
+    }
+    setCounter4(counter4 - 1)
+  }
+
+  const [counter5, setCounter5] = useState(0)
+
+  // Function is called everytime increment button is clicked
+  const handleClick15 = () => {
+    // Counter state is incremented
+    setCounter5(counter5 + 1)
+  }
+
+  // Function is called everytime decrement button is clicked
+  const handleClick25 = () => {
+    // Counter state is decremented
+    if (counter5 === 0) {
+      return
+    }
+    setCounter5(counter5 - 1)
+  }
+
   const style = {
     width: '90%',
     height: '40%',
@@ -158,29 +261,299 @@ function UpdateHosInfo() {
           <Row className="ms-5 mt-5">
             <Col className="ms-5 pt-3 text-black-50">
               <p className="ms-3">No. of Available Beds(General)</p>
-              <CheckBox />
+              <div className="text-left ms-3" style={{ width: '130px' }}>
+                <div className="input-group">
+                  <span className="input-group-btn">
+                    <button
+                      type="button"
+                      className="btn btn-number pt-1 pb-1"
+                      data-type="minus"
+                      data-field="quant[2]"
+                      style={{
+                        backgroundColor: '#79B4B7',
+                        borderColor: '#79B4B7',
+                        color: '#fff',
+                      }}
+                      onClick={handleClick2}
+                    >
+                      <FontAwesomeIcon icon={faMinus} />
+                    </button>
+                  </span>
+                  <input
+                    type="text"
+                    name="quant[2]"
+                    className="form-control input-number pt-1 pb-1"
+                    value={counter}
+                    min="1"
+                    max="100"
+                    style={{ borderColor: '#79B4B7' }}
+                  />
+                  <span className="input-group-btn">
+                    <button
+                      type="button"
+                      className="btn btn-number pt-1 pb-1"
+                      data-type="plus"
+                      data-field="quant[2]"
+                      style={{
+                        backgroundColor: '#79B4B7',
+                        borderColor: '#79B4B7',
+                        color: '#fff',
+                      }}
+                      onClick={handleClick1}
+                    >
+                      <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                  </span>
+                </div>
+                <p></p>
+              </div>
             </Col>
             <Col className="ms-5 pt-3 text-black-50">
               <p className="ms-3">No. of Available Beds(ICU)</p>
-              <CheckBox />
+              <div className="text-left ms-3" style={{ width: '130px' }}>
+                <div className="input-group">
+                  <span className="input-group-btn">
+                    <button
+                      type="button"
+                      className="btn btn-number pt-1 pb-1"
+                      data-type="minus"
+                      data-field="quant[2]"
+                      style={{
+                        backgroundColor: '#79B4B7',
+                        borderColor: '#79B4B7',
+                        color: '#fff',
+                      }}
+                      onClick={handleClick21}
+                    >
+                      <FontAwesomeIcon icon={faMinus} />
+                    </button>
+                  </span>
+                  <input
+                    type="text"
+                    name="quant[2]"
+                    className="form-control input-number pt-1 pb-1"
+                    value={counter1}
+                    min="1"
+                    max="100"
+                    style={{ borderColor: '#79B4B7' }}
+                  />
+                  <span className="input-group-btn">
+                    <button
+                      type="button"
+                      className="btn btn-number pt-1 pb-1"
+                      data-type="plus"
+                      data-field="quant[2]"
+                      style={{
+                        backgroundColor: '#79B4B7',
+                        borderColor: '#79B4B7',
+                        color: '#fff',
+                      }}
+                      onClick={handleClick11}
+                    >
+                      <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                  </span>
+                </div>
+                <p></p>
+              </div>
             </Col>
             <Col className="ms-5 pt-3 text-black-50">
               <p className="ms-3">No. of Available Private Ward</p>
-              <CheckBox />
+              <div className="text-left ms-3" style={{ width: '130px' }}>
+                <div className="input-group">
+                  <span className="input-group-btn">
+                    <button
+                      type="button"
+                      className="btn btn-number pt-1 pb-1"
+                      data-type="minus"
+                      data-field="quant[2]"
+                      style={{
+                        backgroundColor: '#79B4B7',
+                        borderColor: '#79B4B7',
+                        color: '#fff',
+                      }}
+                      onClick={handleClick22}
+                    >
+                      <FontAwesomeIcon icon={faMinus} />
+                    </button>
+                  </span>
+                  <input
+                    type="text"
+                    name="quant[2]"
+                    className="form-control input-number pt-1 pb-1"
+                    value={counter2}
+                    min="1"
+                    max="100"
+                    style={{ borderColor: '#79B4B7' }}
+                  />
+                  <span className="input-group-btn">
+                    <button
+                      type="button"
+                      className="btn btn-number pt-1 pb-1"
+                      data-type="plus"
+                      data-field="quant[2]"
+                      style={{
+                        backgroundColor: '#79B4B7',
+                        borderColor: '#79B4B7',
+                        color: '#fff',
+                      }}
+                      onClick={handleClick12}
+                    >
+                      <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                  </span>
+                </div>
+                <p></p>
+              </div>
             </Col>
           </Row>
           <Row className="ms-5 mt-5">
             <Col className="ms-5 pt-3 text-black-50">
               <p className="ms-3">No. of Available Ventilator Beds</p>
-              <CheckBox />
+              <div className="text-left ms-3" style={{ width: '130px' }}>
+                <div className="input-group">
+                  <span className="input-group-btn">
+                    <button
+                      type="button"
+                      className="btn btn-number pt-1 pb-1"
+                      data-type="minus"
+                      data-field="quant[2]"
+                      style={{
+                        backgroundColor: '#79B4B7',
+                        borderColor: '#79B4B7',
+                        color: '#fff',
+                      }}
+                      onClick={handleClick23}
+                    >
+                      <FontAwesomeIcon icon={faMinus} />
+                    </button>
+                  </span>
+                  <input
+                    type="text"
+                    name="quant[2]"
+                    className="form-control input-number pt-1 pb-1"
+                    value={counter3}
+                    min="1"
+                    max="100"
+                    style={{ borderColor: '#79B4B7' }}
+                  />
+                  <span className="input-group-btn">
+                    <button
+                      type="button"
+                      className="btn btn-number pt-1 pb-1"
+                      data-type="plus"
+                      data-field="quant[2]"
+                      style={{
+                        backgroundColor: '#79B4B7',
+                        borderColor: '#79B4B7',
+                        color: '#fff',
+                      }}
+                      onClick={handleClick13}
+                    >
+                      <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                  </span>
+                </div>
+                <p></p>
+              </div>
             </Col>
             <Col className="ms-5 pt-3 text-black-50">
               <p className="ms-3">No. of Available Oxygen Cylinder</p>
-              <CheckBox />
+              <div className="text-left ms-3" style={{ width: '130px' }}>
+                <div className="input-group">
+                  <span className="input-group-btn">
+                    <button
+                      type="button"
+                      className="btn btn-number pt-1 pb-1"
+                      data-type="minus"
+                      data-field="quant[2]"
+                      style={{
+                        backgroundColor: '#79B4B7',
+                        borderColor: '#79B4B7',
+                        color: '#fff',
+                      }}
+                      onClick={handleClick24}
+                    >
+                      <FontAwesomeIcon icon={faMinus} />
+                    </button>
+                  </span>
+                  <input
+                    type="text"
+                    name="quant[2]"
+                    className="form-control input-number pt-1 pb-1"
+                    value={counter4}
+                    min="1"
+                    max="100"
+                    style={{ borderColor: '#79B4B7' }}
+                  />
+                  <span className="input-group-btn">
+                    <button
+                      type="button"
+                      className="btn btn-number pt-1 pb-1"
+                      data-type="plus"
+                      data-field="quant[2]"
+                      style={{
+                        backgroundColor: '#79B4B7',
+                        borderColor: '#79B4B7',
+                        color: '#fff',
+                      }}
+                      onClick={handleClick14}
+                    >
+                      <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                  </span>
+                </div>
+                <p></p>
+              </div>
             </Col>
             <Col className="ms-5 pt-3 text-black-50">
               <p className="ms-3">No. of Available Blood Bag</p>
-              <CheckBox />
+              <div className="text-left ms-3" style={{ width: '130px' }}>
+                <div className="input-group">
+                  <span className="input-group-btn">
+                    <button
+                      type="button"
+                      className="btn btn-number pt-1 pb-1"
+                      data-type="minus"
+                      data-field="quant[2]"
+                      style={{
+                        backgroundColor: '#79B4B7',
+                        borderColor: '#79B4B7',
+                        color: '#fff',
+                      }}
+                      onClick={handleClick25}
+                    >
+                      <FontAwesomeIcon icon={faMinus} />
+                    </button>
+                  </span>
+                  <input
+                    type="text"
+                    name="quant[2]"
+                    className="form-control input-number pt-1 pb-1"
+                    value={counter5}
+                    min="1"
+                    max="100"
+                    style={{ borderColor: '#79B4B7' }}
+                  />
+                  <span className="input-group-btn">
+                    <button
+                      type="button"
+                      className="btn btn-number pt-1 pb-1"
+                      data-type="plus"
+                      data-field="quant[2]"
+                      style={{
+                        backgroundColor: '#79B4B7',
+                        borderColor: '#79B4B7',
+                        color: '#fff',
+                      }}
+                      onClick={handleClick15}
+                    >
+                      <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                  </span>
+                </div>
+                <p></p>
+              </div>
             </Col>
           </Row>
         </Row>
