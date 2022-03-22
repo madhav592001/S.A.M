@@ -12,7 +12,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 function HospitalDashboard() {
   //Checkboc States
-
+  const [city,setCity] = useState('');
+  const [gen,setgen] = useState('');
+  const [icu,seticu] = useState('');
+  const [vntilator,setventilator] = useState('');
+  const [oxy,setoxy] = useState('');
+  const [bloodbag,setbloodbag] = useState('');
   //  Counter is a state initialized to 0
   const [counter, setCounter] = useState(0)
 
@@ -255,12 +260,12 @@ function HospitalDashboard() {
             className=" text-center col-lg-3 col-sm-4 col-5"
             style={{ backgroundColor: '#F8F0DF' }}
           >
-            <img
+           <Link to = '/'> <img
               className="mt-3 justifyItems-center"
               src={logo}
               style={{ width: '60%', height: '45%' }}
               alt="logo "
-            />
+            /></Link>
           </Col>
         </Row>
         <Row>

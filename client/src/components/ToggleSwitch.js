@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Col,
   Container,
@@ -51,7 +51,6 @@ function ToggleSwitch() {
     },3000)
   }
   }
-  
   
   //* form state
   
@@ -138,10 +137,10 @@ function ToggleSwitch() {
         {loading ? <Spinner animation='grow' variant='info' /> : "" }
 
         {success && (
-          <Alert variant='success'>OTP sent successfully on your email</Alert>
+          <Alert variant='success' onClose={() => setMessage("")} dismissible>OTP sent successfully on your email</Alert>
         )}
           {
-            error &&  <Alert variant='danger'>{error}</Alert> 
+            error &&  <Alert variant='danger' onClose={() => setError("")} dismissible>{error}</Alert> 
           }
 
         <div style={{ paddingTop: '4%', marginLeft: '2%' }}>
@@ -271,10 +270,10 @@ function ToggleSwitch() {
           {loading ? <Spinner animation='grow' variant='info' /> : "" }
 
 {success && (
-  <Alert variant='success'>{message}</Alert>
+  <Alert variant='success' onClose={() => setMessage("")} dismissible>{message}</Alert>
 )}
   {
-    error &&  <Alert variant='danger'>{error}</Alert> 
+    error &&  <Alert variant='danger' onClose={() => setError("")} dismissible>{error}</Alert> 
   }
         <div style={{ paddingTop: '4%', marginLeft: '2%' }}>
           <span
