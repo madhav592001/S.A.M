@@ -119,7 +119,7 @@ exports.verifyOtp = async (req, res) => {
       });
       if (hospital.length <= 0) {
         return res
-          .status(200)
+          .status(210)
           .json({ message: 'No Hospitals found! signup first' });
       } else {
         const { expiresAt } = hospital[0];

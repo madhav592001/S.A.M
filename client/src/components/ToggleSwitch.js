@@ -22,7 +22,6 @@ function ToggleSwitch() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState("");
-  const [userId, setUserId] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [otp,setotp] = useState() ; 
@@ -42,10 +41,11 @@ function ToggleSwitch() {
       config
     );
 
-    console.log(res.data)
+    // console.log(res.data)
 
     if (res.status === 200) {
-      setUserId(res.data.userId);
+      await localStorage.setItem('userId',res.data.data.userId)
+      // console.log(res.data.data)
       setSuccess(true);
       setMessage((re) => setMessage("OTP sent successfully on Email"))
       // console.log(userId) ;
@@ -61,15 +61,20 @@ function ToggleSwitch() {
   };
 
   const verifyOtp = async(e) => {
+    e.preventDefault()
     setLoading((kfj) => setLoading(true));
     const config = {
-      userId : userId,
+      userId : localStorage.getItem("userId"),
       otp:otp
     }
+    console.log(config)
     const res = await axios.post(
       'http://localhost:5000/api/v1/hospital/verifyotp',
       config
     );
+
+      console.log(res)
+
     if(res.status === 200){
       setSuccess(true) ; 
       setMessage((re) => setMessage("OTP verified"))
@@ -80,7 +85,7 @@ function ToggleSwitch() {
 
     }
     if (res.status === 210)
-      setError((error) => setError('Code Expired Or Wrong OTP'));
+      setError((error) => setError('Code Expired Or Invalid Credentials'));
   }
 
   const name1 = 'Login';
@@ -201,6 +206,8 @@ function ToggleSwitch() {
               disabled={close}
               type='text'
               placeholder='Enter OTP'
+              value={otp}
+              onChange = {(e) => setotp(e.target.value)}
             />
           </Form.Group>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -212,10 +219,9 @@ function ToggleSwitch() {
                 borderRadius: '22px',
                 fontSize: '100%',
               }}
-              type='submit'
               disabled={close}
+              onClick = {verifyOtp}
             >
-              {' '}
               Verify
             </Button>
           </div>
