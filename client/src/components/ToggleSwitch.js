@@ -1,15 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import {
-  Col,
-  Container,
-  Navbar,
-  Row,
-  Form,
-  Button,
-  ToggleButton,
-  Alert,
-  Spinner,
-} from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 import './ToggleSwitch.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -136,7 +126,11 @@ function ToggleSwitch() {
         {loading ? <Spinner animation='grow' variant='info' /> : ''}
 
         {success && (
-          <Alert variant='success'  onClose={() => setSuccess(false)} dismissible>
+          <Alert
+            variant='success'
+            onClose={() => setSuccess(false)}
+            dismissible
+          >
             OTP sent successfully on your email
           </Alert>
         )}
