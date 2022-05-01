@@ -9,6 +9,7 @@ import HospitalDashboard from './components/HospitalDashboard'
 import Doctordetail from './components/Doctordetail'
 import UpdateHosInfo from './components/UpdateHosInfo'
 import UpdateDocInfo from './components/UpdateDocInfo'
+
 function App() {
   return (
     <div className="App">
@@ -23,11 +24,11 @@ function App() {
           <Route path="/doctordetail" element={<Doctordetail />} />
           <Route path="/updatehosinfo" element={<UpdateHosInfo />} />
           <Route path="/updatedocinfo" element={<UpdateDocInfo />} />
-          
+
         </Routes>
       </BrowserRouter>
     </div>
   )
 }
 
-export default App
+export default App 

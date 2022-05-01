@@ -61,7 +61,8 @@ exports.getDetailsById = async (req, res) => {
 
 //todo GET ALL THE HOSPITAL DETAILS
 exports.getAllHospitals = async (req, res) => {
-  if (req.query.length > 0) {
+  // console.log(req.query)
+  if (req.query) {
     console.log(req.query);
 
     try {
